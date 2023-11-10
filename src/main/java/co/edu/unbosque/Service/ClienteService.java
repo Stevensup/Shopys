@@ -49,6 +49,21 @@ public class ClienteService {
         }
     }
     
+    public Cliente autenticarCliente(String email, String userPassword) {
+        // Buscar un cliente por su correo electrónico (email)
+        Cliente cliente = clienteRepository.findByEmail(email);
+
+        if (cliente != null) {
+            // Verificar si la contraseña proporcionada coincide con la contraseña almacenada
+            if (cliente.getUserPassword() != null && cliente.getUserPassword().equals(userPassword)) {
+                return cliente; // Autenticación exitosa
+            }
+        }
+        
+        return null; // Autenticación fallida
+    }
     
+    
+
 }
 

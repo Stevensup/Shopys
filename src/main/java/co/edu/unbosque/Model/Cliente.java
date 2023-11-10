@@ -22,11 +22,12 @@ public class Cliente {
 	    private boolean frecuente;
 	    private LocalDateTime fechaRegistro;
 	    private boolean ctaBloqueada;
-
+	    private int intentosFallidos;
 	    public Cliente() {
 
 	    }
 	    
+		
 	    public Cliente(String nombre, String apellido, String email, String telefono, String direccion, String userPassword, boolean frecuente, LocalDateTime fechaRegistro, boolean ctaBloqueada) {
 	        this.nombre = nombre;
 	        this.apellido = apellido;
@@ -38,7 +39,15 @@ public class Cliente {
 	        this.fechaRegistro = fechaRegistro;
 	        this.ctaBloqueada = ctaBloqueada;
 	    }
+	    
 
+		public int getIntentosFallidos() {
+			return intentosFallidos;
+		}
+
+		public void setIntentosFallidos(int intentosFallidos) {
+			this.intentosFallidos = intentosFallidos;
+		}
 
 		public int getId() {
 			return id;
