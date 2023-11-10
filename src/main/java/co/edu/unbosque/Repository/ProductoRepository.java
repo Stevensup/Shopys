@@ -1,11 +1,14 @@
 package co.edu.unbosque.Repository;
 
-import co.edu.unbosque.Model.Cliente;
+import co.edu.unbosque.Model.Producto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
-	Cliente findByEmail(String email);
-}
 
+
+
+@Repository
+public interface ProductoRepository extends JpaRepository<Producto, Integer>{
+    
+        
+}

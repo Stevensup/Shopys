@@ -17,6 +17,8 @@ public class Producto {
     private int cantidadInventario;
     private String categoria;
 
+	public Producto() {
+	}
     public Producto(int id, String nombre, String descripcion, double precio, int cantidadInventario, String categoria) {
         this.id = id;
         this.nombre = nombre;
