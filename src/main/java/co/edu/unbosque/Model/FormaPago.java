@@ -14,6 +14,9 @@ public class FormaPago {
     private String nombre;
     private boolean disponible;
 
+	public FormaPago() {
+	}
+
     public FormaPago(int id, String nombre, boolean disponible) {
         this.id = id;
         this.nombre = nombre;
