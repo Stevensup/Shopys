@@ -36,7 +36,7 @@ public ResponseEntity<String> autenticarCliente(@RequestBody ClienteLoginRequest
     if (clienteAutenticado != null && !clienteAutenticado.isCtaBloqueada()) {
         // Restablecer el contador de intentos fallidos si la autenticación es exitosa
         intentosFallidos.remove(email);
-        return ResponseEntity.status(HttpStatus.OK).body("{\"message\": \"Sesión iniciada: " + email + "\"}");
+        return ResponseEntity.status(HttpStatus.OK).body("{\"message\": \"Sesión iniciada: " + email +  "\"}");
     } else if (clienteAutenticado != null && clienteAutenticado.isCtaBloqueada()) {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("La cuenta está bloqueada.");
     } else {
