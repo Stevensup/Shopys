@@ -63,7 +63,13 @@ public class ClienteService {
         return null; // Autenticación fallida
     }
     
-    
+    public void bloquearCliente(String email) {
+        Cliente cliente = clienteRepository.findByEmail(email);
+        if (cliente != null) {
+            cliente.setCtaBloqueada(true);
+            clienteRepository.save(cliente);
+        }
+    }
 
 }
 
