@@ -1,6 +1,5 @@
 package co.edu.unbosque.Service;
 
-// FormaPagoService.java
 
 import co.edu.unbosque.Model.FormaPago;
 import co.edu.unbosque.Repository.FormaPagoRepository;

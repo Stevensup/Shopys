@@ -1,11 +1,11 @@
 package co.edu.unbosque.Model;
 
-import java.sql.Timestamp;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.sql.Timestamp;
+
 
 @Entity
 public class Notificacion {
@@ -16,6 +16,10 @@ public class Notificacion {
     private Timestamp fecha;
     private int cliente;
 
+
+	public Notificacion() {
+	}
+	
     public Notificacion(int id, String mensaje, Timestamp fecha, int cliente) {
         this.id = id;
         this.mensaje = mensaje;
