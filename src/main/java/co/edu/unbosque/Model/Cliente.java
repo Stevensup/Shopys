@@ -23,6 +23,7 @@ public class Cliente {
 	    private LocalDateTime fechaRegistro;
 	    private boolean ctaBloqueada;
 	    private int intentosFallidos;
+		
 	    public Cliente() {
 
 	    }

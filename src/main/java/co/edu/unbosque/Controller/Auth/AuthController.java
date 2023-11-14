@@ -29,9 +29,9 @@ public class AuthController {
         Cliente clienteAutenticado = clienteService.autenticarCliente(email, userPassword);
 
         if (clienteAutenticado != null) {
-            return ResponseEntity.status(HttpStatus.OK).body("Sesión iniciada: " + email); // Autenticación exitosa
+            return ResponseEntity.status(HttpStatus.OK).body("{\"message\": \"Sesión iniciada: " + email + "\"}");
         } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(); // Autenticación fallida
+             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("usuario o contrasena invalida"); // Autenticación exitosa
         }
     }
 }
