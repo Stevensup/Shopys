@@ -2,6 +2,7 @@ package co.edu.unbosque.Controller;
 
 import co.edu.unbosque.Model.DetalleFactura;
 import co.edu.unbosque.Service.DetalleFacturaService;
+import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
+@Transactional
+@CrossOrigin(origins = { "http://localhost:8081", "http://localhost:8080", "*" })
 @RestController
 @RequestMapping("/detalles-factura")
 public class DetalleFacturaController {

@@ -1,5 +1,13 @@
 package co.edu.unbosque.Controller.Auth;
 
+import jakarta.transaction.Transactional;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RestController;
+
+
+@Transactional
+@RestController
+@CrossOrigin(origins = { "http://localhost:8081", "http://localhost:8080", "*" })
 public class ClienteLoginRequest {
     private String email;
     private String userPassword;

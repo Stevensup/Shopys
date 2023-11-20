@@ -2,6 +2,7 @@ package co.edu.unbosque.Controller;
 
 import co.edu.unbosque.Model.Domicilio;
 import co.edu.unbosque.Service.DomicilioService;
+import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 
 
+@Transactional
+@CrossOrigin(origins = { "http://localhost:8081", "http://localhost:8080", "*" })
 @RestController
 @RequestMapping("/domicilios")
 public class DomicilioController {

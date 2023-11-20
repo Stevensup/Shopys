@@ -1,6 +1,8 @@
 package co.edu.unbosque.Controller;
 
 import co.edu.unbosque.Model.Producto;
+import co.edu.unbosque.Service.ClienteService;
+import co.edu.unbosque.Service.FormaPagoService;
 import co.edu.unbosque.Service.ProductoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +35,15 @@ public class ProductoController {
     	// private static final Logger LOGGER = LogManager.getLogger(ShopysApplication.class);
 
 
-        @Autowired
-        private ProductoService productoService;
+            @Autowired
+            private ProductoService productoService;
 
+            @Autowired
+                private ClienteService clienteService; // Agregado
+
+                @Autowired
+                private FormaPagoService formaPagoService; // Agregado
+                
         @GetMapping("/{id}")
         public ResponseEntity<Producto> obtenerProductoPorId(@PathVariable int id) {
             Producto producto = productoService.obtenerProductoPorId(id);

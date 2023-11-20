@@ -22,7 +22,7 @@ public class FacturaService {
         return facturaRepository.findById(id);
     }
 
-    public Factura guardarFactura(Factura factura) {
+    public Factura crearFactura(Factura factura) {
         return facturaRepository.save(factura);
     }
 
