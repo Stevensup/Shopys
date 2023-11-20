@@ -16,7 +16,7 @@ public class Factura {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
      @ManyToOne
-    @JoinColumn(name = "cliente", referencedColumnName = "id")
+    @JoinColumn(name = "CLIENTE", referencedColumnName = "id")
     private Cliente cliente;
     private Date fechaFacturacion;
     private double valorCompra;
