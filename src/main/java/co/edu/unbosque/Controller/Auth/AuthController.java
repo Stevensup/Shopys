@@ -27,31 +27,32 @@ public class AuthController {
     private Map<String, Integer> intentosFallidos = new HashMap<>();
 
     @PostMapping
-public ResponseEntity<String> autenticarCliente(@RequestBody ClienteLoginRequest clienteLoginRequest) {
-    String email = clienteLoginRequest.getEmail();
-    String userPassword = clienteLoginRequest.getUserPassword();
+    public ResponseEntity<String> autenticarCliente(@RequestBody ClienteLoginRequest clienteLoginRequest) {
+        String email = clienteLoginRequest.getEmail();
+        String userPassword = clienteLoginRequest.getUserPassword();
 
-    Cliente clienteAutenticado = clienteService.autenticarCliente(email, userPassword);
+        Cliente clienteAutenticado = clienteService.autenticarCliente(email, userPassword);
 
-    if (clienteAutenticado != null && !clienteAutenticado.isCtaBloqueada()) {
-        // Restablecer el contador de intentos fallidos si la autenticación es exitosa
-        intentosFallidos.remove(email);
-        return ResponseEntity.status(HttpStatus.OK).body("{\"message\": \"Sesión iniciada: " + email +  "\"}");
-    } else if (clienteAutenticado != null && clienteAutenticado.isCtaBloqueada()) {
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("La cuenta está bloqueada.");
-    } else {
-        // Incrementar el contador de intentos fallidos
-        intentosFallidos.put(email, intentosFallidos.getOrDefault(email, 0) + 1);
-
-        // Verificar si se superó el límite de intentos fallidos
-        if (intentosFallidos.getOrDefault(email, 0) >= 3) {
-            clienteService.bloquearCliente(email);
+        if (clienteAutenticado != null && !clienteAutenticado.isCtaBloqueada()) {
+            // Restablecer el contador de intentos fallidos si la autenticación es exitosa
+            intentosFallidos.remove(email);
+            int clienteId = clienteAutenticado.getId();
+            return ResponseEntity.status(HttpStatus.OK).body("{\"message\":\"Sesión iniciada\",\"correo\":\"" + email + "\",\"id\":" + clienteId + "}");
+        } else if (clienteAutenticado != null && clienteAutenticado.isCtaBloqueada()) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("La cuenta está bloqueada.");
         } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuario o contraseña inválida");
+            // Incrementar el contador de intentos fallidos
+            intentosFallidos.put(email, intentosFallidos.getOrDefault(email, 0) + 1);
+
+            // Verificar si se superó el límite de intentos fallidos
+            if (intentosFallidos.getOrDefault(email, 0) >= 3) {
+                clienteService.bloquearCliente(email);
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("La cuenta está bloqueada.");
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuario o contraseña inválida");
+            }
         }
     }
-}
 
 }
 

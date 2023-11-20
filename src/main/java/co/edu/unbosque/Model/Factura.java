@@ -1,11 +1,13 @@
 package co.edu.unbosque.Model;
 
-import java.sql.Date;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import java.sql.Date;
+
 
 @Entity
 public class Factura {
@@ -13,22 +15,32 @@ public class Factura {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int cliente;
+     @ManyToOne
+    @JoinColumn(name = "cliente", referencedColumnName = "id")
+    private Cliente cliente;
     private Date fechaFacturacion;
     private double valorCompra;
     private double valorIva;
     private double totalFacturado;
-    private int formaPago;
+	@ManyToOne
+    @JoinColumn(name = "formaPago", referencedColumnName = "id")
+    private FormaPago formaPago;
 
-    public Factura(int id, int cliente, Date fechaFacturacion, double valorCompra, double valorIva, double totalFacturado, int formaPago) {
-        this.id = id;
-        this.cliente = cliente;
-        this.fechaFacturacion = fechaFacturacion;
-        this.valorCompra = valorCompra;
-        this.valorIva = valorIva;
-        this.totalFacturado = totalFacturado;
-        
-    }
+
+	public Factura() {
+	}
+	
+
+	public Factura(int id, Cliente cliente, Date fechaFacturacion, double valorCompra, double valorIva, double totalFacturado, FormaPago formaPago) {
+		this.id = id;
+		this.cliente = cliente;
+		this.fechaFacturacion = fechaFacturacion;
+		this.valorCompra = valorCompra;
+		this.valorIva = valorIva;
+		this.totalFacturado = totalFacturado;
+		this.formaPago = formaPago;
+	}
+
 
 	public int getId() {
 		return id;
@@ -38,13 +50,15 @@ public class Factura {
 		this.id = id;
 	}
 
-	public int getCliente() {
-		return cliente;
+
+	public Cliente getCliente() {
+		return this.cliente;
 	}
 
-	public void setCliente(int cliente) {
+	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+	
 
 	public Date getFechaFacturacion() {
 		return fechaFacturacion;
@@ -78,11 +92,13 @@ public class Factura {
 		this.totalFacturado = totalFacturado;
 	}
 
-	public int getFormaPago() {
-		return formaPago;
+
+
+	public FormaPago getFormaPago() {
+		return this.formaPago;
 	}
 
-	public void setFormaPago(int formaPago) {
+	public void setFormaPago(FormaPago formaPago) {
 		this.formaPago = formaPago;
 	}
     

@@ -84,5 +84,29 @@ public class ProductoController {
             }
         }
 
+        @PostMapping("/actualizar-inventario/{id}/{cantidadVendida}")
+        public ResponseEntity<String> actualizarInventario(@PathVariable int id, @PathVariable int cantidadVendida) {
+            try {
+                // Obten la cantidad disponible actual del producto
+                Producto producto = productoService.obtenerProductoPorId(id);
+                int cantidadDisponible = producto.getCantidadInventario();
+        
+                // Verifica si la cantidad a vender es mayor a la cantidad disponible
+                if (cantidadVendida > cantidadDisponible) {
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body("Error: La cantidad a vender es mayor a la cantidad disponible en el inventario");
+                }
+        
+                // Si la verificación pasa, llama al servicio para actualizar el inventario
+                productoService.actualizarInventario(id, cantidadVendida);
+
+                return ResponseEntity.status(HttpStatus.OK)
+                    .body("Inventario actualizado con éxito");
+            } catch (Exception e) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error al actualizar el inventario del producto");
+            }
+        }
+        
 
 }

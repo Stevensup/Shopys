@@ -43,6 +43,16 @@ public class ProductoService {
         }
     }
 
+    @Transactional
+    public void actualizarInventario(int id, int cantidadVendida) {
+        Producto producto = obtenerProductoPorId(id);
+        if (producto != null) {
+            int nuevoInventario = producto.getCantidadInventario() - cantidadVendida;
+            producto.setCantidadInventario(nuevoInventario);
+            productoRepository.save(producto);
+        }
+    }
+
     public boolean eliminarProducto(int id) {
         if (productoRepository.existsById(id)) {
             productoRepository.deleteById(id);
