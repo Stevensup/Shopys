@@ -95,6 +95,7 @@ public class ProductoController {
         @PostMapping("/actualizar-inventario/{id}/{cantidadVendida}")
         public ResponseEntity<String> actualizarInventario(@PathVariable int id, @PathVariable int cantidadVendida) {
             try {
+                System.out.println("cantidadVendida: " + cantidadVendida + " id: " + id);
                 // Obten la cantidad disponible actual del producto
                 Producto producto = productoService.obtenerProductoPorId(id);
                 int cantidadDisponible = producto.getCantidadInventario();
