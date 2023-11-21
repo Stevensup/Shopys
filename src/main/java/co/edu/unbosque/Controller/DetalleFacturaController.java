@@ -33,7 +33,7 @@ public class DetalleFacturaController {
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
-    @PostMapping
+    @PostMapping({"/guardar"})
     public ResponseEntity<DetalleFactura> guardarDetalleFactura(@RequestBody DetalleFactura detalleFactura) {
         DetalleFactura nuevoDetalleFactura = detalleFacturaService.guardarDetalleFactura(detalleFactura);
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevoDetalleFactura);
