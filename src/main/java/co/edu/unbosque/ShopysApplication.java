@@ -8,7 +8,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin(origins = { "http://localhost:4200", "*" })
 public class ShopysApplication {
 
-	public static void main(String[] args) {
+	public
+	/**
+	 * @param args
+	 * @return
+	 */
+	static void main(String[] args) {
 		SpringApplication.run(ShopysApplication.class, args);
 	}
 

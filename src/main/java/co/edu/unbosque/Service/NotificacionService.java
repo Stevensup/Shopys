@@ -6,18 +6,24 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-
 @Service
 public class NotificacionService {
 
     @Autowired
     private NotificacionRepository notificacionRepository;
 
+    /**
+     * @param idCliente
+     * @return
+     */
     public List<Notificacion> obtenerNotificacionesPorCliente(int idCliente) {
         return notificacionRepository.findByCliente(idCliente);
     }
 
+    /**
+     * @param notificacion
+     * @return Notificacion
+     */
     public Notificacion guardarNotificacion(Notificacion notificacion) {
         return notificacionRepository.save(notificacion);
     }

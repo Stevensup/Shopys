@@ -7,17 +7,23 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class DetalleFacturaService {
 
     @Autowired
     private DetalleFacturaRepository detalleFacturaRepository;
 
+    /**
+     * @return
+     */
     public List<DetalleFactura> obtenerTodosLosDetallesFactura() {
         return detalleFacturaRepository.findAll();
     }
 
+    /**
+     * @param id
+     * @return Optional<DetalleFactura>
+     */
     public Optional<DetalleFactura> obtenerDetalleFacturaPorId(int id) {
         return detalleFacturaRepository.findById(id);
     }

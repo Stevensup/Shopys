@@ -7,13 +7,15 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-
 @Service
 public class DomicilioService {
 
     @Autowired
     private DomicilioRepository domicilioRepository;
+
+    /**
+     * @return List<Domicilio>
+     */
 
     public List<Domicilio> obtenerTodosLosDomicilios() {
         return domicilioRepository.findAll();

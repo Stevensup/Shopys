@@ -7,21 +7,32 @@ import jakarta.persistence.Id;
 
 @Entity
 public class FormaPago {
-    
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-    private String nombre;
-    private boolean disponible;
 
-	public FormaPago() {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private String nombre;
+	private boolean disponible;
+
+	public
+	/**
+	 * @return
+	 */
+	FormaPago() {
 	}
 
-    public FormaPago(int id, String nombre, boolean disponible) {
-        this.id = id;
-        this.nombre = nombre;
-        this.disponible = disponible;
-    }
+	public
+	/**
+	 * @param id
+	 * @param nombre
+	 * @param disponible
+	 * @return
+	 */
+	FormaPago(int id, String nombre, boolean disponible) {
+		this.id = id;
+		this.nombre = nombre;
+		this.disponible = disponible;
+	}
 
 	public int getId() {
 		return id;
@@ -47,6 +58,4 @@ public class FormaPago {
 		this.disponible = disponible;
 	}
 
-    
 }
-

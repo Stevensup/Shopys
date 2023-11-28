@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @Transactional
 @RestController
 @CrossOrigin(origins = { "http://localhost:8081", "http://localhost:8080", "*" })
@@ -25,6 +24,11 @@ public class AuthController {
     @Autowired
     private ClienteService clienteService;
     private Map<String, Integer> intentosFallidos = new HashMap<>();
+
+    /**
+     * @param clienteLoginRequest
+     * @return ResponseEntity<String>
+     */
 
     @PostMapping
     public ResponseEntity<String> autenticarCliente(@RequestBody ClienteLoginRequest clienteLoginRequest) {
@@ -37,7 +41,8 @@ public class AuthController {
             // Restablecer el contador de intentos fallidos si la autenticación es exitosa
             intentosFallidos.remove(email);
             int clienteId = clienteAutenticado.getId();
-            return ResponseEntity.status(HttpStatus.OK).body("{\"message\":\"Sesión iniciada\",\"correo\":\"" + email + "\",\"id\":" + clienteId + "}");
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body("{\"message\":\"Sesión iniciada\",\"correo\":\"" + email + "\",\"id\":" + clienteId + "}");
         } else if (clienteAutenticado != null && clienteAutenticado.isCtaBloqueada()) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("La cuenta está bloqueada.");
         } else {
@@ -55,8 +60,3 @@ public class AuthController {
     }
 
 }
-
-
-
-
-

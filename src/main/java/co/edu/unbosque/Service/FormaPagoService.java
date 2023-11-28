@@ -1,6 +1,5 @@
 package co.edu.unbosque.Service;
 
-
 import co.edu.unbosque.Model.FormaPago;
 import co.edu.unbosque.Repository.FormaPagoRepository;
 import java.util.List;
@@ -9,25 +8,29 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-
-
 @Service
 public class FormaPagoService {
 
     private final FormaPagoRepository formaPagoRepository;
+
+    /**
+     * @param formaPagoRepository
+     * @return
+     */
     @Autowired
-    public FormaPagoService(FormaPagoRepository formaPagoRepository ) {
+    public FormaPagoService(FormaPagoRepository formaPagoRepository) {
         this.formaPagoRepository = formaPagoRepository;
     }
 
-    public List<FormaPago> listarFormasPago() {    
+    /**
+     * @return List<FormaPago>
+     */
+    public List<FormaPago> listarFormasPago() {
         List<FormaPago> filterCeroPayment = formaPagoRepository.findAll().stream()
                 .filter(x -> x.isDisponible())
                 .collect(Collectors.toList());
-        return  filterCeroPayment;
+        return filterCeroPayment;
     }
-
 
     public Optional<FormaPago> obtenerFormaPagoPorId(int id) {
         return formaPagoRepository.findById(id);

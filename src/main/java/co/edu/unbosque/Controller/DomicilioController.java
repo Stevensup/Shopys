@@ -10,8 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
-
 @Transactional
 @CrossOrigin(origins = { "http://localhost:8081", "http://localhost:8080", "*" })
 @RestController
@@ -20,6 +18,10 @@ public class DomicilioController {
 
     @Autowired
     private DomicilioService domicilioService;
+
+    /**
+     * @return ResponseEntity<List<Domicilio>>
+     */
 
     @GetMapping
     public ResponseEntity<List<Domicilio>> obtenerTodosLosDomicilios() {

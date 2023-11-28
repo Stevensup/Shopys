@@ -26,10 +26,12 @@ public class DetalleFactura {
     private int cantidad;
     private BigDecimal subtotalProducto;
 
+    /**
+     * @return
+     */
 
     public DetalleFactura() {
     }
-
 
     public DetalleFactura(Factura factura, Producto producto, int cantidad, BigDecimal subtotalProducto) {
         this.factura = factura;
@@ -37,7 +39,6 @@ public class DetalleFactura {
         this.cantidad = cantidad;
         this.subtotalProducto = subtotalProducto;
     }
-
 
     public int getId() {
         return id;
@@ -79,4 +80,3 @@ public class DetalleFactura {
         this.subtotalProducto = subtotalProducto;
     }
 }
-

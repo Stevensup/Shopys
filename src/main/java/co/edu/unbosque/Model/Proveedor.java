@@ -8,18 +8,26 @@ import jakarta.persistence.Id;
 @Entity
 public class Proveedor {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-    private String nombre;
-    private String email;
-    private String telefono;
+	private String nombre;
+	private String email;
+	private String telefono;
 
-    public Proveedor(int id, String nombre, String email, String telefono) {
-        this.id = id;
-        this.nombre = nombre;
-        this.email = email;
-        this.telefono = telefono;
-    }
+	public
+	/**
+	 * @param id
+	 * @param nombre
+	 * @param email
+	 * @param telefono
+	 * @return
+	 */
+	Proveedor(int id, String nombre, String email, String telefono) {
+		this.id = id;
+		this.nombre = nombre;
+		this.email = email;
+		this.telefono = telefono;
+	}
 
 	public int getId() {
 		return id;
@@ -53,6 +61,4 @@ public class Proveedor {
 		this.telefono = telefono;
 	}
 
-    
 }
-

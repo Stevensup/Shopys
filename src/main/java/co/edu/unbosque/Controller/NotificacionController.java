@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
 @Transactional
 @CrossOrigin(origins = { "http://localhost:8081", "http://localhost:8080", "*" })
 @RestController
@@ -18,6 +17,11 @@ public class NotificacionController {
 
     @Autowired
     private NotificacionService notificacionService;
+
+    /**
+     * @param idCliente
+     * @return
+     */
 
     @GetMapping("/{idCliente}")
     public ResponseEntity<List<Notificacion>> obtenerNotificacionesPorCliente(@PathVariable int idCliente) {

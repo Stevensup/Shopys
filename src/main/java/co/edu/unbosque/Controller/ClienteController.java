@@ -16,40 +16,45 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
-
-
+/**
+ * This class represents the controller for managing clients in the application.
+ */
 @Transactional
 @CrossOrigin(origins = { "http://localhost:8081", "http://localhost:8080", "*" })
 @RestController
 @RequestMapping("/cliente")
 public class ClienteController {
 
-	// private static final Logger LOGGER = LogManager.getLogger(ShopysApplication.class);
+	// private static final Logger LOGGER =
+	// LogManager.getLogger(ShopysApplication.class);
 
-		
 	@Autowired
 	private ClienteService clienteService;
 
-	
+	/**
+	 * @param id
+	 * @return ResponseEntity<Cliente>
+	 */
 	@GetMapping("/{id}")
 	public ResponseEntity<Cliente> obtenerClientePorId(@PathVariable int id) {
 		Cliente cliente = clienteService.obtenerClientePorId(id);
 		if (cliente != null) {
 			// LOGGER.info("Cliente encontrado");
-			return ResponseEntity.ok(cliente);	
+			return ResponseEntity.ok(cliente);
 		} else {
 			return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).build();
 		}
 	}
 
+	/**
+	 * @param cliente
+	 * @return ResponseEntity<Cliente>
+	 */
 	@PostMapping("/registrar")
 	public ResponseEntity<Cliente> crearCliente(@RequestBody Cliente cliente) {
 		Cliente nuevoCliente = clienteService.crearCliente(cliente);
 		return ResponseEntity.status(HttpStatus.CREATED).body(nuevoCliente);
 	}
-	
-
 
 	@PutMapping("/{id}")
 	public ResponseEntity<Cliente> actualizarCliente(@PathVariable int id, @RequestBody Cliente cliente) {

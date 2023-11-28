@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
 @Transactional
 @CrossOrigin(origins = { "http://localhost:8081", "http://localhost:8080", "*" })
 @RestController
@@ -19,6 +18,10 @@ public class DetalleFacturaController {
 
     @Autowired
     private DetalleFacturaService detalleFacturaService;
+
+    /**
+     * @return ResponseEntity<List<DetalleFactura>>
+     */
 
     @GetMapping
     public ResponseEntity<List<DetalleFactura>> obtenerTodosLosDetallesFactura() {
@@ -33,7 +36,7 @@ public class DetalleFacturaController {
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
-    @PostMapping({"/guardar"})
+    @PostMapping({ "/guardar" })
     public ResponseEntity<DetalleFactura> guardarDetalleFactura(@RequestBody DetalleFactura detalleFactura) {
         DetalleFactura nuevoDetalleFactura = detalleFacturaService.guardarDetalleFactura(detalleFactura);
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevoDetalleFactura);

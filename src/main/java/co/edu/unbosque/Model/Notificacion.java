@@ -6,26 +6,36 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.sql.Timestamp;
 
-
 @Entity
 public class Notificacion {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-    private String mensaje;
-    private Timestamp fecha;
-    private int cliente;
+	private String mensaje;
+	private Timestamp fecha;
+	private int cliente;
 
-
-	public Notificacion() {
+	public
+	/**
+	 * @return
+	 */
+	Notificacion() {
 	}
-	
-    public Notificacion(int id, String mensaje, Timestamp fecha, int cliente) {
-        this.id = id;
-        this.mensaje = mensaje;
-        this.fecha = fecha;
-        this.cliente = cliente;
-    }
+
+	public
+	/**
+	 * @param id
+	 * @param mensaje
+	 * @param fecha
+	 * @param cliente
+	 * @return
+	 */
+	Notificacion(int id, String mensaje, Timestamp fecha, int cliente) {
+		this.id = id;
+		this.mensaje = mensaje;
+		this.fecha = fecha;
+		this.cliente = cliente;
+	}
 
 	public int getId() {
 		return id;
@@ -59,6 +69,4 @@ public class Notificacion {
 		this.cliente = cliente;
 	}
 
-    
 }
-

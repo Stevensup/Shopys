@@ -9,19 +9,23 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-
-
-
 @Service
 public class ProductoService {
-    
 
     private final Logger logger = LoggerFactory.getLogger(ProductoService.class);
 
     @Autowired
     private ProductoRepository productoRepository;
 
+    /**
+     * @param id
+     * @return
+     */
+
+    /**
+     * @param id
+     * @return
+     */
     public Producto obtenerProductoPorId(int id) {
         return productoRepository.findById(id).orElse(null);
     }
@@ -62,15 +66,8 @@ public class ProductoService {
         }
     }
 
-    
-public List<Producto> obtenerTodosLosProductos() {
-    return productoRepository.findAll();
-}
-
-
-
-
-    
-
+    public List<Producto> obtenerTodosLosProductos() {
+        return productoRepository.findAll();
+    }
 
 }

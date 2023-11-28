@@ -1,3 +1,7 @@
+/**
+ * This interface represents a repository for the DetalleFactura entity.
+ * It extends the JpaRepository interface, providing CRUD operations for DetalleFactura objects.
+ */
 package co.edu.unbosque.Repository;
 
 import co.edu.unbosque.Model.DetalleFactura;

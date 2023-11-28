@@ -1,3 +1,7 @@
+/**
+ * This interface represents a repository for managing Domicilio entities.
+ * It extends the JpaRepository interface, providing CRUD operations for Domicilio objects.
+ */
 package co.edu.unbosque.Repository;
 
 import co.edu.unbosque.Model.Domicilio;

@@ -10,18 +10,26 @@ import jakarta.persistence.Id;
 @Entity
 public class Domicilio {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private int cliente;
-    private String direccionEntrega;
-    private Date fecha;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private int cliente;
+	private String direccionEntrega;
+	private Date fecha;
 
-    public Domicilio(int id, int cliente, String direccionEntrega, Date fecha) {
-        this.id = id;
-        this.cliente = cliente;
-        this.direccionEntrega = direccionEntrega;
-        this.fecha = fecha;
-    }
+	public
+	/**
+	 * @param id
+	 * @param cliente
+	 * @param direccionEntrega
+	 * @param fecha
+	 * @return
+	 */
+	Domicilio(int id, int cliente, String direccionEntrega, Date fecha) {
+		this.id = id;
+		this.cliente = cliente;
+		this.direccionEntrega = direccionEntrega;
+		this.fecha = fecha;
+	}
 
 	public int getId() {
 		return id;
@@ -55,6 +63,4 @@ public class Domicilio {
 		this.fecha = fecha;
 	}
 
-    
 }
-

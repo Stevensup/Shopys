@@ -10,23 +10,35 @@ import jakarta.persistence.Id;
 @Entity
 public class CompraInventario {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private int producto;
-    private int cantidadAdquirida;
-    private Date fecha;
-    private int proveedor;
-    private int formaPago;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private int producto;
+	private int cantidadAdquirida;
+	private Date fecha;
+	private int proveedor;
+	private int formaPago;
 
-    public CompraInventario(int id, int producto, int cantidadAdquirida, Date fecha, int proveedor, int formaPago) {
-        this.id = id;
-        this.producto = producto;
-        this.cantidadAdquirida = cantidadAdquirida;
-        this.fecha = fecha;
-        this.proveedor = proveedor;
-        this.formaPago = formaPago;
-    }
+	/**
+	 * @param id
+	 * @param producto
+	 * @param cantidadAdquirida
+	 * @param fecha
+	 * @param proveedor
+	 * @param formaPago
+	 * @return
+	 */
+	public CompraInventario(int id, int producto, int cantidadAdquirida, Date fecha, int proveedor, int formaPago) {
+		this.id = id;
+		this.producto = producto;
+		this.cantidadAdquirida = cantidadAdquirida;
+		this.fecha = fecha;
+		this.proveedor = proveedor;
+		this.formaPago = formaPago;
+	}
 
+	/**
+	 * @return int
+	 */
 	public int getId() {
 		return id;
 	}
@@ -75,5 +87,4 @@ public class CompraInventario {
 		this.formaPago = formaPago;
 	}
 
-    
 }

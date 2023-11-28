@@ -8,24 +8,36 @@ import jakarta.persistence.Id;
 @Entity
 public class UsuariosDrogueria {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String nombre;
-    private String apellido;
-    private String email;
-    private String userPassword;
-    private boolean administrador;
-    private boolean ctaBloqueada;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private String nombre;
+	private String apellido;
+	private String email;
+	private String userPassword;
+	private boolean administrador;
+	private boolean ctaBloqueada;
 
-    public UsuariosDrogueria(int id, String nombre, String apellido, String email, String userPassword, boolean administrador, boolean ctaBloqueada) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.email = email;
-        this.userPassword = userPassword;
-        this.administrador = administrador;
-        this.ctaBloqueada = ctaBloqueada;
-    }
+	public
+	/**
+	 * @param id
+	 * @param nombre
+	 * @param apellido
+	 * @param email
+	 * @param userPassword
+	 * @param administrador
+	 * @param ctaBloqueada
+	 * @return
+	 */
+	UsuariosDrogueria(int id, String nombre, String apellido, String email, String userPassword,
+			boolean administrador, boolean ctaBloqueada) {
+		this.id = id;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.email = email;
+		this.userPassword = userPassword;
+		this.administrador = administrador;
+		this.ctaBloqueada = ctaBloqueada;
+	}
 
 	public int getId() {
 		return id;
@@ -83,5 +95,4 @@ public class UsuariosDrogueria {
 		this.ctaBloqueada = ctaBloqueada;
 	}
 
-    
 }

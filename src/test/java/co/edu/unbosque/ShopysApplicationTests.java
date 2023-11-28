@@ -50,6 +50,10 @@ class ShopysApplicationTests {
 		assertEquals("john@example.com", cliente.getEmail());
 	}
 
+	/**
+	 * @param string
+	 * @param nombre
+	 */
 	private void assertEquals(String string, String nombre) {
 	}
 

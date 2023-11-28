@@ -11,23 +11,30 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
 @Transactional
 @CrossOrigin(origins = { "http://localhost:8081", "http://localhost:8080", "*" })
 @RestController
 @RequestMapping("/facturas")
 public class FacturaController {
 
-     @Autowired
+    @Autowired
     private FacturaService facturaService;
     private ClienteRepository clienteRepository;
-    
+
+    /**
+     * @param facturaService
+     * @param clienteRepository
+     * @return
+     */
     @Autowired
     public FacturaController(FacturaService facturaService, ClienteRepository clienteRepository) {
         this.facturaService = facturaService;
         this.clienteRepository = clienteRepository;
     }
 
+    /**
+     * @return ResponseEntity<List<Factura>>
+     */
     @GetMapping
     public ResponseEntity<List<Factura>> obtenerTodasLasFacturas() {
         List<Factura> facturas = facturaService.obtenerTodasLasFacturas();
@@ -41,12 +48,11 @@ public class FacturaController {
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
-    
     @PostMapping("/guardar-factura")
     public ResponseEntity<String> guardarFactura(@RequestBody Factura factura) {
         try {
             facturaService.crearFactura(factura);
-    
+
             return ResponseEntity.ok("Factura guardada correctamente." + factura);
         } catch (Exception e) {
             e.printStackTrace();
@@ -56,7 +62,6 @@ public class FacturaController {
                     .body("Error al guardar la factura: " + e.getMessage());
         }
     }
-    
 
     @PostMapping("/crear-factura")
     public ResponseEntity<Factura> crearFactura(@RequestBody Factura factura) {
@@ -64,7 +69,4 @@ public class FacturaController {
         return new ResponseEntity<>(facturaCreada, HttpStatus.CREATED);
     }
 
-
 }
-    
-

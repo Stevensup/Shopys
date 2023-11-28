@@ -8,30 +8,43 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import java.sql.Date;
 
-
 @Entity
 public class Factura {
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-     @ManyToOne
-    @JoinColumn(name = "CLIENTE", referencedColumnName = "id")
-    private Cliente cliente;
-    private Date fechaFacturacion;
-    private double valorCompra;
-    private double valorIva;
-    private double totalFacturado;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	@ManyToOne
-    @JoinColumn(name = "formaPago", referencedColumnName = "id")
-    private FormaPago formaPago;
+	@JoinColumn(name = "CLIENTE", referencedColumnName = "id")
+	private Cliente cliente;
+	private Date fechaFacturacion;
+	private double valorCompra;
+	private double valorIva;
+	private double totalFacturado;
+	@ManyToOne
+	@JoinColumn(name = "formaPago", referencedColumnName = "id")
+	private FormaPago formaPago;
 
-
-	public Factura() {
+	public
+	/**
+	 * @return
+	 */
+	Factura() {
 	}
-	
 
-	public Factura(int id, Cliente cliente, Date fechaFacturacion, double valorCompra, double valorIva, double totalFacturado, FormaPago formaPago) {
+	public
+	/**
+	 * @param id
+	 * @param cliente
+	 * @param fechaFacturacion
+	 * @param valorCompra
+	 * @param valorIva
+	 * @param totalFacturado
+	 * @param formaPago
+	 * @return
+	 */
+	Factura(int id, Cliente cliente, Date fechaFacturacion, double valorCompra, double valorIva,
+			double totalFacturado, FormaPago formaPago) {
 		this.id = id;
 		this.cliente = cliente;
 		this.fechaFacturacion = fechaFacturacion;
@@ -41,7 +54,6 @@ public class Factura {
 		this.formaPago = formaPago;
 	}
 
-
 	public int getId() {
 		return id;
 	}
@@ -50,7 +62,6 @@ public class Factura {
 		this.id = id;
 	}
 
-
 	public Cliente getCliente() {
 		return this.cliente;
 	}
@@ -58,7 +69,6 @@ public class Factura {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	
 
 	public Date getFechaFacturacion() {
 		return fechaFacturacion;
@@ -92,8 +102,6 @@ public class Factura {
 		this.totalFacturado = totalFacturado;
 	}
 
-
-
 	public FormaPago getFormaPago() {
 		return this.formaPago;
 	}
@@ -101,7 +109,5 @@ public class Factura {
 	public void setFormaPago(FormaPago formaPago) {
 		this.formaPago = formaPago;
 	}
-    
-    
-}
 
+}
