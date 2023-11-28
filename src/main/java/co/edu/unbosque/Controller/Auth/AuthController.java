@@ -3,6 +3,10 @@ package co.edu.unbosque.Controller.Auth;
 import co.edu.unbosque.Controller.Auth.ClienteLoginRequest;
 import co.edu.unbosque.Model.Cliente;
 import co.edu.unbosque.Service.ClienteService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +35,12 @@ public class AuthController {
      */
 
     @PostMapping
+    @Operation(summary = "Autenticar un cliente", description = "Autentica a un cliente.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Cliente autenticado exitosamente"),
+            @ApiResponse(responseCode = "401", description = "No autorizado"),
+            @ApiResponse(responseCode = "412", description = "Error de precondición")
+    })
     public ResponseEntity<String> autenticarCliente(@RequestBody ClienteLoginRequest clienteLoginRequest) {
         String email = clienteLoginRequest.getEmail();
         String userPassword = clienteLoginRequest.getUserPassword();
