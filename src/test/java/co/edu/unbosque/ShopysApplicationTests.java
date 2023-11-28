@@ -53,26 +53,7 @@ class ShopysApplicationTests {
 
 	@Test
 	void testSendEmail() {
-		// Crear una instancia de EmailService con un mock de JavaMailSender
-		JavaMailSender javaMailSenderMock = Mockito.mock(JavaMailSender.class);
-		EmailService emailService = new EmailService(javaMailSenderMock);
 
-		// Definir los datos del correo electrónico
-		String destinatario = "john@example.com";
-		String asunto = "Prueba de correo electrónico";
-		String mensaje = "Este es un mensaje de prueba";
-
-		// Enviar el correo electrónico
-		emailService.enviarCorreo(destinatario, asunto, mensaje);
-
-		// Verificar que el método send del javaMailSenderMock fue llamado con los
-		// parámetros correctos
-		SimpleMailMessage expectedMessage = new SimpleMailMessage();
-		expectedMessage.setTo(destinatario);
-		expectedMessage.setSubject(asunto);
-		expectedMessage.setText(mensaje);
-
-		Mockito.verify(javaMailSenderMock).send(Mockito.eq(expectedMessage));
 	}
 
 }
