@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import co.edu.unbosque.Model.Cliente;
 import co.edu.unbosque.Service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +56,28 @@ class ShopysApplicationTests {
 	@Test
 	void testSendEmail() {
 
+		// Mock JavaMailSender
+		JavaMailSender javaMailSender = Mockito.mock(JavaMailSender.class);
+
+		// Crea una instancia de EmailService con el JavaMailSender simulado
+		EmailService emailService = new EmailService(javaMailSender, new ObjectMapper());
+
+		// Crea un mensaje simulado
+		SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+		simpleMailMessage.setFrom("buseche@unbosque.edu.co");
+		simpleMailMessage.setTo("destinatario@example.com");
+		simpleMailMessage.setSubject("Asunto del correo");
+		simpleMailMessage.setText("Cuerpo del correo");
+
+		// Configura el comportamiento esperado cuando se llama a send
+		Mockito.doNothing().when(javaMailSender).send(Mockito.any(SimpleMailMessage.class));
+
+		// Llama al método enviarCorreo con un JSON simulado
+		String json = "{\"destinatario\": \"destinatario@example.com\", \"asunto\": \"Asunto del correo\", \"cuerpo\": \"Cuerpo del correo\"}";
+		emailService.enviarCorreo(json);
+
+		// Verifica que el método send fue llamado exactamente una vez
+		Mockito.verify(javaMailSender, Mockito.times(1)).send(Mockito.any(SimpleMailMessage.class));
 	}
 
 }
