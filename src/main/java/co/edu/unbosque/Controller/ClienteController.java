@@ -32,9 +32,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/cliente")
 public class ClienteController {
 
-	// private static final Logger LOGGER =
-	// LogManager.getLogger(ShopysApplication.class);
-
 	@Autowired
 	private ClienteService clienteService;
 
@@ -51,7 +48,6 @@ public class ClienteController {
 	public ResponseEntity<Cliente> obtenerClientePorId(@PathVariable int id) {
 		Cliente cliente = clienteService.obtenerClientePorId(id);
 		if (cliente != null) {
-			// LOGGER.info("Cliente encontrado");
 			return ResponseEntity.ok(cliente);
 		} else {
 			return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).build();

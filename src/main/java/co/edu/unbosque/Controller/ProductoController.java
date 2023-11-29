@@ -39,9 +39,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @RequestMapping("/producto")
 public class ProductoController {
 
-    // private static final Logger LOGGER =
-    // LogManager.getLogger(ShopysApplication.class);
-
     @Autowired
     private ProductoService productoService;
 

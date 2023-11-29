@@ -3,11 +3,16 @@ package co.edu.unbosque.Service;
 import co.edu.unbosque.Model.Notificacion;
 import co.edu.unbosque.Repository.NotificacionRepository;
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class NotificacionService {
+
+    private final Logger logger = LoggerFactory.getLogger(NotificacionService.class);
 
     @Autowired
     private NotificacionRepository notificacionRepository;

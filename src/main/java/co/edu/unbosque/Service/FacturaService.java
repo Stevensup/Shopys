@@ -4,11 +4,16 @@ import co.edu.unbosque.Model.Factura;
 import co.edu.unbosque.Repository.FacturaRepository;
 import java.util.List;
 import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class FacturaService {
+
+    private final Logger logger = LoggerFactory.getLogger(FacturaService.class);
 
     @Autowired
     private FacturaRepository facturaRepository;
